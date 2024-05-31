@@ -8,7 +8,8 @@ public class UFlecsQuickstartTarget : TargetRules
 	public UFlecsQuickstartTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
-		DefaultBuildSettings = BuildSettingsVersion.V2;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Latest;
+		DefaultBuildSettings = BuildSettingsVersion.V5;
 		ExtraModuleNames.AddRange( new string[] { "UFlecsQuickstart", "FlecsLibrary", "UnrealFlecs", "MainGameplay"} );
 	}
 }

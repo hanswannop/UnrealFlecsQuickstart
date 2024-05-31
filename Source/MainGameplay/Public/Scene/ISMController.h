@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 
 #include <queue>
-
+#include "Components/InstancedStaticMeshComponent.h"
 #include "GameFramework/Actor.h"
 #include "ISMController.generated.h"
 
@@ -20,6 +20,10 @@ public:
 
 public:
 	//Component fields
+	
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<USceneComponent> Root;
+
 	UPROPERTY(EditAnywhere)
 	UInstancedStaticMeshComponent* InstancedStaticMeshComponent = nullptr;
 

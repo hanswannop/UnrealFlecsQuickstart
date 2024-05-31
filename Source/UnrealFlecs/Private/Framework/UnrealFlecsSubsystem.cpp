@@ -1,13 +1,13 @@
 ﻿// Copyright 2021 Red J
 #include "Framework/UnrealFlecsSubsystem.h"
-
+#include "Containers/Ticker.h"
 #include "Framework/FlecsRegistration.h"
 
 
 void UUnrealFlecsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	OnTickDelegate = FTickerDelegate::CreateUObject(this, &UUnrealFlecsSubsystem::Tick);
-	OnTickHandle = FTicker::GetCoreTicker().AddTicker(OnTickDelegate);
+	OnTickHandle = FTSTicker::GetCoreTicker().AddTicker(OnTickDelegate);
 
 	ECSWorld = new flecs::world();
 
@@ -25,7 +25,7 @@ void UUnrealFlecsSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 void UUnrealFlecsSubsystem::Deinitialize()
 {
-	FTicker::GetCoreTicker().RemoveTicker(OnTickHandle);
+	FTSTicker::GetCoreTicker().RemoveTicker(OnTickHandle);
 
 	if(ECSWorld)
 	{
